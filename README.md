@@ -106,6 +106,5 @@ isMock为true时则开启整个项目走mock请求
 ## 最后
 本项目适合向往全栈发展的同学，比较适合入门，觉得项目对你有用的话可以github上给他`Star`星星
 
-![QQ图片20220327125021.png](https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/ccdf68f6739f44309ed898f85be53d42~tplv-k3u1fbpfcp-watermark.image?)
 
 注：UI布局以及部分逻辑是参考慕课网某个社区项目的进行重构的
