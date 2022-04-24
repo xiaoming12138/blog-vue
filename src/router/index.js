@@ -4,7 +4,9 @@ import Home from '../views/Home.vue'
 import store from '@/store'
 import jwt from 'jsonwebtoken'
 import dayjs from 'dayjs'
-Vue.use(VueRouter)
+Vue.use(VueRouter({
+  module:'history'
+}))
 
 const routes = [
   {
