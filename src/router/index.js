@@ -4,9 +4,7 @@ import Home from '../views/Home.vue'
 import store from '@/store'
 import jwt from 'jsonwebtoken'
 import dayjs from 'dayjs'
-Vue.use(VueRouter({
-  module:'history'
-}))
+Vue.use(VueRouter)
 
 const routes = [
   {
@@ -81,6 +79,7 @@ const routes = [
 ]
 
 const router = new VueRouter({
+  mode:'history',
   routes
 })
 router.beforeEach((to, from, next) => {
