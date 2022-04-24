@@ -1,5 +1,5 @@
 <template>
-  <div class="list-item-main">
+  <div class="list-item-main" @click="jumpToDetails(item)">
     <div class="list-item-left">
       <img :src="env === 'development' ? config.baseUrl.dev + item.userInfo.pic : config.baseUrl.prod + item.userInfo.pic" alt="" style="cursor: pointer;" @click="gotoUserDetails(item.userInfo._id)">
     </div>
@@ -7,7 +7,7 @@
       <div class="list-item-top">
         <div class="top-left">
           <span class="item-tag">{{ mappingType(item.type) }}</span>
-          <span class="top-title" @click="jumpToDetails(item)">{{ item.title }}</span>
+          <span class="top-title">{{ item.title }}</span>
         </div>
         <div class="top-right">
           <span v-for="tag in item.tags" :key="`tag_${tag.title}`" class="badge" :class="tag.className">{{ tag.title }}</span>
@@ -80,6 +80,8 @@ export default {
 .list-item-main{
   display: flex;
   padding: $spacing-col-base 0;
+  cursor: pointer;
+
   .list-item-left{
     img{
       width: 45px;

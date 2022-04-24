@@ -31,7 +31,7 @@ module.exports = {
     },
     output: {
       // 输出重构  打包编译后的 文件名称
-      filename: `xiaoming__[chunkhash:8]__[name]__entry.js`,
+      filename: `xiaoming__[hash]__[name]__entry.js`,
       chunkFilename: `xiaoming__[chunkhash:8]__[name].js`
     },
     plugins: [
@@ -74,7 +74,7 @@ module.exports = {
             .optimization.splitChunks({
               chunks: 'all',
               maxSize: 1024*500,         //字节 引入的文件大于100kb才进行分割
-              // automaticNameDelimiter: '__', //缓存组和生成文件名称之间的连接符
+              automaticNameDelimiter: '__', //缓存组和生成文件名称之间的连接符
               cacheGroups: {
                 libs: {
                   name: 'chunk-libs',

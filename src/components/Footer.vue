@@ -1,6 +1,6 @@
 <template>
   <div class="footer-main">
-    <p>CorderX技术社区 2021 © CorderX 出品</p>
+    <p>2022 © xiaoming 出品</p>
     <p class="footer-bottom">
       <a href="">加入团队</a>
       <a href="">前端兴趣小组</a>
