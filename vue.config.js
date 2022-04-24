@@ -19,8 +19,8 @@ module.exports = {
       }
     },
     extract: {
-      filename: `xiaoming__[chunkhash]__[name]__entry.css`,
-      chunkFilename: `xiaoming__[chunkhash]__[name].css`
+      filename: `xiaoming__[chunkhash:8]__[name]__entry.css`,
+      chunkFilename: `xiaoming__[chunkhash:8]__[name].css`
     }
   },
   configureWebpack: {
@@ -31,8 +31,8 @@ module.exports = {
     },
     output: {
       // 输出重构  打包编译后的 文件名称
-      filename: `xiaoming__[chunkhash]__[name]__entry.js`,
-      chunkFilename: `xiaoming__[chunkhash]__[name].js`
+      filename: `xiaoming__[chunkhash:8]__[name]__entry.js`,
+      chunkFilename: `xiaoming__[chunkhash:8]__[name].js`
     },
     plugins: [
       new CompressionPlugin({
@@ -62,8 +62,6 @@ module.exports = {
     config
       .when(process.env.NODE_ENV !== 'development',
         config => {
-          config.output.filename = 'xiaoming__[chunkhash]__[name]__entry.js'
-          config.output.chunkFilename = 'xiaoming__[chunkhash]__[name].js'
           config
             .plugin('ScriptExtHtmlWebpackPlugin')
             .after('html')
@@ -75,20 +73,19 @@ module.exports = {
           config
             .optimization.splitChunks({
               chunks: 'all',
-              minSize: 1024*100,         //字节 引入的文件大于30kb才进行分割
-              automaticNameDelimiter: '__', //缓存组和生成文件名称之间的连接符
+              maxSize: 1024*500,         //字节 引入的文件大于100kb才进行分割
+              // automaticNameDelimiter: '__', //缓存组和生成文件名称之间的连接符
               cacheGroups: {
                 libs: {
                   name: 'chunk-libs',
                   test: /[\\/]node_modules[\\/]/,
-                  minChunks: 2, //  minimum common number
                   priority: 10,
                   chunks: 'initial' // only package third parties that are initially dependent
                 },
                 commons: {
                   name: 'chunk-commons',
                   test: resolve('src/components'), // can customize your rules
-                  minChunks: 2, //  minimum common number
+                  minChunks: 3, //  minimum common number
                   priority: 5,
                   reuseExistingChunk: true
                 }
