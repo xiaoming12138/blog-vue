@@ -3,7 +3,7 @@
     <p>2022 © xiaoming 出品</p>
     <p class="footer-bottom">
       <a href="">加入团队</a>
-      <a href="">前端兴趣小组</a>
+      <a href="">兴趣小组</a>
       <a href="">QQ群交流</a>
     </p>
   </div>

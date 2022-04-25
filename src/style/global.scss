@@ -76,9 +76,49 @@ body{
     display: inline-block!important
   }
 }
-@media screen and (min-width: 1200px) {
+@media screen and (min-width: 1200px){
   .app-container {
     width:1170px;
+  }
+  .app-hide-lg {
+    display: none!important
+  }
+
+  .app-show-lg-block {
+    display: block!important
+  }
+
+  .app-show-lg-inline {
+    display: inline!important
+  }
+
+  .app-show-lg-inline-block {
+    display: inline-block!important
+  }
+}
+@media screen and (min-width: 1560px) {
+  .app-container {
+    width:1530px;
+  }
+  .app-hide-lg {
+    display: none!important
+  }
+
+  .app-show-lg-block {
+    display: block!important
+  }
+
+  .app-show-lg-inline {
+    display: inline!important
+  }
+
+  .app-show-lg-inline-block {
+    display: inline-block!important
+  }
+}
+@media screen and (min-width: 1920px) {
+  .app-container {
+    width:1890px;
   }
   .app-hide-lg {
     display: none!important

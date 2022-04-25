@@ -4,30 +4,63 @@
       <!-- 左边导航 -->
       <div class="header-left">
         <router-link to="/">
-          <img src="../assets/logo-2.png" alt="" srcset="">
+          <img src="../assets/logo-2.png" alt="" srcset="" />
         </router-link>
         <ul class="header-nav app-hide-xs">
-          <li class="header-nav-item"><a href="javascript:;"><i class="iconfont icon-jiaoliu" />交流</a></li>
-          <li class="header-nav-item"><a href="javascript:;"><i class="iconfont icon-iconmingxinganli" />案例</a></li>
-          <li class="header-nav-item"><a href="javascript:;"><i class="iconfont icon-ui" />框架</a></li>
+          <router-link to="/">
+            <li class="header-nav-item">
+              <a href="javascript:;">首页</a>
+            </li>
+          </router-link>
+          <li class="header-nav-item">
+            <a href="javascript:;"><i class="iconfont icon-jiaoliu" />交流</a>
+          </li>
+          <li class="header-nav-item">
+            <a href="javascript:;"
+              ><i class="iconfont icon-iconmingxinganli" />案例</a
+            >
+          </li>
+          <li class="header-nav-item">
+            <a href="javascript:;"><i class="iconfont icon-ui" />框架</a>
+          </li>
         </ul>
       </div>
       <!-- 右边导航 -->
       <div class="header-right">
         <ul class="header-nav">
           <template v-if="!isLogin">
-            <li class="header-nav-item"><a class="avatar app-hide-xs" href="javascript:;"><i class="iconfont icon-touxiang" /></a></li>
-            <li class="header-nav-item"><router-link class="login" to="/login">登录</router-link></li>
-            <li class="header-nav-item"><router-link class="login" to="/login">注册</router-link></li>
+            <li class="header-nav-item">
+              <a class="avatar app-hide-xs" href="javascript:;"
+                ><i class="iconfont icon-touxiang"
+              /></a>
+            </li>
+            <li class="header-nav-item">
+              <router-link class="login" to="/login">登录</router-link>
+            </li>
+            <li class="header-nav-item">
+              <router-link class="login" to="/login">注册</router-link>
+            </li>
           </template>
           <template v-else>
             <li class="header-nav-item">
               <!--  -->
               <a-dropdown>
                 <router-link to="/center" class="avatar">
-                  <img class="login-avatar" :src="env === 'development' ? config.baseUrl.dev + userInfo.pic : config.baseUrl.prod + userInfo.pic" alt="">
+                  <img
+                    class="login-avatar"
+                    :src="
+                      env === 'development'
+                        ? config.baseUrl.dev + userInfo.pic
+                        : config.baseUrl.prod + userInfo.pic
+                    "
+                    alt=""
+                  />
                   {{ userInfo.nickName }}
-                  <a-badge v-show="noReadNum && noReadNum > 0" :count="noReadNum" style="margin-left: 10px;" />
+                  <a-badge
+                    v-show="noReadNum && noReadNum > 0"
+                    :count="noReadNum"
+                    style="margin-left: 10px"
+                  />
                 </router-link>
                 <a-menu slot="overlay" @click="onClickMenu">
                   <a-menu-item key="info" disabled>
@@ -35,7 +68,9 @@
                   </a-menu-item>
                   <a-menu-divider />
                   <a-menu-item key="baseInfo">
-                    <a href="javascript:;"><a-icon type="database" />基本信息</a>
+                    <a href="javascript:;"
+                      ><a-icon type="database" />基本信息</a
+                    >
                   </a-menu-item>
                   <a-menu-item key="message">
                     <a href="javascript:;"><a-icon type="message" />我的消息</a>
@@ -61,42 +96,46 @@
 /**
  * 头部导航组件
  */
-import { mapState, mapMutations } from 'vuex'
-import config from '@/config'
+import { mapState, mapMutations } from "vuex";
+import config from "@/config";
 export default {
-  name: 'Header',
+  name: "Header",
   data() {
     return {
       config,
-      env: process.env.NODE_ENV
-    }
+      env: process.env.NODE_ENV,
+    };
   },
   computed: {
-    ...mapState(['isLogin', 'userInfo', 'noReadNum'])
+    ...mapState(["isLogin", "userInfo", "noReadNum"]),
   },
   methods: {
-    ...mapMutations(['SET_USERINFO', 'SET_LOGIN', 'SET_TOKEN']),
+    ...mapMutations(["SET_USERINFO", "SET_LOGIN", "SET_TOKEN"]),
     onClickMenu({ key }) {
-      if (key === 'baseInfo') { // 基本信息
-        this.$router.push({ name: 'UserCenter' })
-      } else if (key === 'message') { // 我的消息
-        this.$router.push({ name: 'Message' })
-      } else if (key === 'my') { // 我的主页
-        this.$router.push({ name: 'User', params: { id: this.userInfo._id }})
-      } else if (key === 'logout') { // 安全退出
-        this.SET_USERINFO({})
-        this.SET_LOGIN(false)
-        this.SET_TOKEN('')
-        this.$router.push({ name: 'Home' })
+      if (key === "baseInfo") {
+        // 基本信息
+        this.$router.push({ name: "UserCenter" });
+      } else if (key === "message") {
+        // 我的消息
+        this.$router.push({ name: "Message" });
+      } else if (key === "my") {
+        // 我的主页
+        this.$router.push({ name: "User", params: { id: this.userInfo._id } });
+      } else if (key === "logout") {
+        // 安全退出
+        this.SET_USERINFO({});
+        this.SET_LOGIN(false);
+        this.SET_TOKEN("");
+        this.$router.push({ name: "Home" });
       }
-    }
-  }
-}
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>
-.header-main{
-  background-color: #393D49;
+.header-main {
+  background-color: #393d49;
   width: 100%;
   height: 60px;
   position: fixed;
@@ -105,26 +144,27 @@ export default {
   border-bottom: 1px solid #404553;
   border-right: 1px solid #404553;
   border-radius: 0;
-  .header-box{
+  .header-box {
     display: flex;
     align-items: center;
     justify-content: space-between;
     height: 100%;
-    .header-left{
+    .header-left {
       display: flex;
       align-items: center;
     }
-    .header-right{
-      .header-nav{
-        .header-nav-item{
-          .login, .register{
+    .header-right {
+      .header-nav {
+        .header-nav-item {
+          .login,
+          .register {
             padding: 0 25px 0 0;
           }
-          .avatar{
-            i{
+          .avatar {
+            i {
               font-size: 32px;
             }
-            .login-avatar{
+            .login-avatar {
               width: 36px;
               height: 36px;
               margin: 0 10px;
@@ -135,29 +175,29 @@ export default {
       }
     }
     // 导航公共样式
-    .header-nav{
+    .header-nav {
       display: flex;
       justify-content: space-between;
       align-items: center;
       margin-bottom: 0;
-      .header-nav-item{
-        a{
+      .header-nav-item {
+        a {
           padding: 0 25px 0 60px;
           display: block;
           height: 60px;
           line-height: 60px;
-          color: rgba(255,255,255,.7);
+          color: rgba(255, 255, 255, 0.7);
           font-size: 14px;
           position: relative;
-          &:hover{
+          &:hover {
             color: #fff;
           }
-          i{
+          i {
             position: absolute;
             left: 25px;
             padding-right: 10px;
             font-size: 26px;
-            &:hover{
+            &:hover {
               color: #fff;
             }
           }
@@ -168,18 +208,23 @@ export default {
 }
 </style>
 <style lang="scss">
-  .ant-dropdown-menu-item{
-    i{
-      margin-right: 10px;
-    }
+.ant-dropdown-menu-item {
+  i {
+    margin-right: 10px;
   }
-  .ant-dropdown-menu-item:hover, .ant-dropdown-menu-submenu-title:hover{
-    background-color: #009688;
-    a{
-      color: #fff;
-    }
+}
+.iconfont.icon-home{
+  background: url('../assets/icon-home.png') no-repeat center;
+}
+.ant-dropdown-menu-item:hover,
+.ant-dropdown-menu-submenu-title:hover {
+  background-color: #009688;
+  a {
+    color: #fff;
   }
-  .ant-dropdown-menu-item-disabled:hover, .ant-dropdown-menu-submenu-title-disabled:hover{
-    background: #fff;
-  }
+}
+.ant-dropdown-menu-item-disabled:hover,
+.ant-dropdown-menu-submenu-title-disabled:hover {
+  background: #fff;
+}
 </style>
