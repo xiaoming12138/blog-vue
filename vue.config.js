@@ -4,18 +4,22 @@ function resolve (dir) {
   return path.join(__dirname, dir)
 }
 module.exports = {
-  pluginOptions: {
-    pwa: {
-        iconPaths: {
-            favicon64: './favicon.ico',
-            favicon32: './favicon.ico',
-            favicon16: './favicon.ico',
-            appleTouchIcon: './favicon.ico',
-            maskIcon: './favicon.ico',
-            msTileImage: './favicon.ico'
-        }
-    },
-},
+  pwa: {
+    iconPaths: {
+        favicon64: './favicon.ico',
+        favicon32: './favicon.ico',
+        favicon16: './favicon.ico',
+        appleTouchIcon: './favicon.ico',
+        maskIcon: './favicon.ico',
+        msTileImage: './favicon.ico'
+    }
+  },
+  pages:{
+    index:{
+      entry:'src/main.js',
+      title:'m-communitys'
+    }
+  },
   lintOnSave: false,
   productionSourceMap: false,
   css: {
