@@ -1,5 +1,6 @@
 {
-  "name": "community",
+  "name": "m-community",
+  "favicon": "./favicon.ico",
   "version": "0.1.0",
   "private": true,
   "scripts": {

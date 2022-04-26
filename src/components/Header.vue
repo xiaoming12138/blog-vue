@@ -4,7 +4,7 @@
       <!-- 左边导航 -->
       <div class="header-left">
         <router-link to="/">
-          <img src="../assets/logo-2.png" alt="" srcset="" />
+          <img class="logo-img" src="../assets/logoNew.png" alt="logo" srcset="" />xiaoming
         </router-link>
         <ul class="header-nav app-hide-xs">
           <router-link to="/">
@@ -152,6 +152,23 @@ export default {
     .header-left {
       display: flex;
       align-items: center;
+      .logo-img{
+        display: inline-block;
+        width: 49px;
+        height: 49px;
+        // background: url('../assets/logoNew.png') no-repeat center;
+        // background-size: contain;
+        vertical-align: middle;
+        margin-right: 10px;
+        image-rendering:-moz-crisp-edges;
+        image-rendering:-o-crisp-edges;
+        image-rendering:-webkit-optimize-contrast;
+        image-rendering: crisp-edges;
+        -ms-interpolation-mode:nearest-neighbor;
+        object-fit: fill; 
+ object-fit: contain;
+ object-fit: scale-down;
+      }
     }
     .header-right {
       .header-nav {
