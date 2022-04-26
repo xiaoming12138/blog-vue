@@ -14,12 +14,6 @@ module.exports = {
         msTileImage: './favicon.ico'
     }
   },
-  pages:{
-    index:{
-      entry:'src/main.js',
-      title:'m-communitys'
-    }
-  },
   lintOnSave: false,
   productionSourceMap: false,
   css: {
