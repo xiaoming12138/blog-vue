@@ -4,7 +4,7 @@
       <!-- 左边导航 -->
       <div class="header-left">
         <router-link to="/">
-          <img class="logo-img" src="../assets/logoNew.png" alt="logo" srcset="" />xiaoming
+          <img class="logo-img" src="../assets/logo.svg" alt="logo" srcset="" />xiaoming
         </router-link>
         <ul class="header-nav app-hide-xs">
           <router-link to="/">
