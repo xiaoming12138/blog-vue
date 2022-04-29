@@ -7,7 +7,7 @@
           <h3 class="box-panel-title">我的会员信息</h3>
           <div class="vip-info-box">
             <p>积分经验值：{{ userInfo.favs }}</p>
-            <p>您当前为：{{ userInfo.isVip ? 'vip': '非VIP' }}</p>
+            <p>您当前为：{{ userInfo.vip ? 'vip': '非VIP' }}</p>
           </div>
         </div>
       </a-col>
