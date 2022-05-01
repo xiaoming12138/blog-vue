@@ -1,7 +1,7 @@
 <template>
   <div class="list-item-main" @click="jumpToDetails(item)">
     <div class="list-item-left">
-      <img :src="env === 'development' ? config.baseUrl.dev + item.userInfo.pic : config.baseUrl.prod + item.userInfo.pic" alt="" style="cursor: pointer;" @click="gotoUserDetails(item.userInfo._id)">
+      <img :src="env === 'development' ? config.baseUrl.dev + item.userInfo.pic : config.baseUrl.prod + item.userInfo.pic" alt="" style="cursor: pointer;" @click.stop="gotoUserDetails(item.userInfo._id)">
     </div>
     <div class="list-item-right">
       <div class="list-item-top">
@@ -15,7 +15,7 @@
       </div>
       <div class="list-item-bottom">
         <div class="bottom-left">
-          <a href="javascript:;">{{ item.userInfo.nickName }}<span v-if="item.userInfo.vip === 1" class="left-vip badge badge-red">VIP</span></a>
+          <a href="javascript:;"  @click.stop="gotoUserDetails(item.userInfo._id)">{{ item.userInfo.nickName }}<span v-if="item.userInfo.vip === 1" class="left-vip badge badge-red">VIP</span></a>
           <span class="left-time">{{ formatCreateTime(item.createTime) }}</span>
           <span class="left-fav"><i class="iconfont icon-kiss" />{{ item.fav }}</span>
         </div>
@@ -81,7 +81,7 @@ export default {
   display: flex;
   padding: $spacing-col-base 0;
   cursor: pointer;
-
+border-bottom: 1px dotted #e9e9e9;
   .list-item-left{
     img{
       width: 45px;

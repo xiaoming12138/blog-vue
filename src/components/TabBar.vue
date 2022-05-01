@@ -102,7 +102,7 @@ export default {
           padding: 0 20px;
           color: #333;
           &:hover{
-            color: #5fb878;
+            color: #00d6bf;
           }
         }
       }
@@ -129,8 +129,18 @@ export default {
     @media (max-width: 768px) {
       .bar-ul{
         height: auto;
+        padding: 5px 0;
         li{
-          width: 33.33%;
+          line-height: 30px;
+                  .active-text{
+          background-color: #00d6bf;
+          color: #fff !important;
+        }
+          a{
+            margin: 5px;
+            border: 1px solid #00d6bf;
+            border-radius: 4px;
+          }
         }
       }
       // .bar-right{
