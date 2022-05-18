@@ -22,6 +22,7 @@
         <div class="bottom-right">
           <i class="iconfont icon-pinglun1" />
           {{ item.answer }}
+          <i class="iconfont read"></i>{{ item.read }}
         </div>
       </div>
     </div>
@@ -144,9 +145,16 @@ border-bottom: 1px dotted #e9e9e9;
         }
       }
       .bottom-right{
+        color: rgba(0, 0, 0, 0.65);
         i{
           vertical-align: middle;
         }
+      }
+      .read{
+        margin-left: 10px;
+        margin-right: 2px;
+        position: relative;
+        top: -2px;
       }
     }
   }

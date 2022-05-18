@@ -10,12 +10,12 @@
         <!-- 发帖人或者超管账号可以删除 -->
         <span
           v-if="(content && content.userInfo && userInfo._id === content.userInfo._id) || (userInfo && userInfo.role && userInfo.role.includes(ROLE_TYPE.SUPER_ADMIN))"
-          class="badge badge-green"
+          class="badge badge-green pointor"
           style="margin-left:35px;"
           @click="deletePost(content._id)"
         >删除</span>
-        <span v-if="userInfo && userInfo.role && userInfo.role.includes(ROLE_TYPE.SUPER_ADMIN)" class="badge badge-green">置顶</span>
-        <span v-if="userInfo && userInfo.role && userInfo.role.includes(ROLE_TYPE.SUPER_ADMIN)" class="badge badge-green">加精</span>
+        <span v-if="userInfo && userInfo.role && userInfo.role.includes(ROLE_TYPE.SUPER_ADMIN)" class="badge badge-green pointor">置顶</span>
+        <span v-if="userInfo && userInfo.role && userInfo.role.includes(ROLE_TYPE.SUPER_ADMIN)" class="badge badge-green pointor">加精</span>
       </div>
       <div class="detail-info-right">
         <i class="iconfont"></i>{{ content.answer }}
@@ -149,6 +149,9 @@ export default {
   .detail-title{
     font-size: 26px;
     line-height: 36px;
+  }
+  .pointor{
+    cursor: pointer;
   }
   .detail-info{
     display: flex;
