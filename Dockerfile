@@ -7,6 +7,7 @@ RUN yarn install --registry=https://registry.npm.taobao.org
 RUN npm run build
 # test
 # test
+# testaaa
 # production stage
 FROM nginx:stable-alpine as production-stage
 COPY --from=build-stage /app/dist /usr/share/nginx/html
