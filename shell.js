@@ -33,7 +33,7 @@ const mergeBranchName = [
   
   inquirer.prompt(mergeBranchName).then((res) => {
     console.log(`Hi ${res.mergeBranchName}!`);
-    shell.exec(`git checkout ${res.mergeBranchName}_new`)
+    shell.exec(`git checkout ${res.mergeBranchName}`)
     shell.exec(`git pull`)
     shell.exec(`git checkout ${branchName}`)
     shell.exec(`git pull`)
