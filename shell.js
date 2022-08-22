@@ -33,13 +33,14 @@ const mergeBranchName = [
   try{
     inquirer.prompt(mergeBranchName).then((mergeBranchNameRes) => {
       // console.log(`${mergeBranchNameRes.mergeBranchName}!`);
+
       shell.exec(`git checkout ${mergeBranchNameRes.mergeBranchName}`)
       shell.exec(`git pull`)
       shell.exec(`git checkout ${branchName}`)
       shell.exec(`git pull`)
   
       inquirer.prompt(mergeDir).then((mergeDirRes) => {
-          
+        try{
           shell.exec(`git checkout ${mergeBranchNameRes.mergeBranchName} ${mergeDirRes.mergeDir}`)
           shell.exec(`git add .`)
           console.log(`git checkout ${mergeBranchNameRes.mergeBranchName} ${mergeDirRes.mergeDir}`)
@@ -48,6 +49,10 @@ const mergeBranchName = [
               shell.exec(`git push origin ${branchName}`)
               console.log('success')
             });
+        }catch(err){
+          console.log(err)
+        }
+          
       
         });
   
