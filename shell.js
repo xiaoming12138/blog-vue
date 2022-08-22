@@ -57,7 +57,7 @@ const mergeBranchName = [
     });
 
   process.on('uncaughtException', (err) => {
-    fs.writeSync(1, `捕获到异常：${err}\n`);
+    console.log(22,err)
   });
 
 
