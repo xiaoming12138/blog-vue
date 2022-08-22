@@ -44,7 +44,6 @@ const mergeBranchName = [
         shell.exec(`git add .`)
         console.log(`git checkout ${mergeBranchNameRes.mergeBranchName} ${mergeDirRes.mergeDir}`)
         inquirer.prompt(mergeCommit).then((mergeCommitRes) => {
-          console('已自动push到远程')
             shell.exec(`git commit -m ${mergeCommitRes.mergeCommit}`)
             shell.exec(`git push origin ${branchName}`)
 
