@@ -41,17 +41,13 @@ const mergeBranchName = [
       shell.exec(`git pull`)
   
       inquirer.prompt(mergeDir).then((mergeDirRes) => {
-
-          let dir = shell.exec(`git checkout ${mergeBranchNameRes.mergeBranchName} ${mergeDirRes.mergeDir}`)
+          shell.exec(`git checkout ${mergeBranchNameRes.mergeBranchName} ${mergeDirRes.mergeDir}`)
           shell.exec(`git add .`)
-          console.log(`git checkout ${mergeBranchNameRes.mergeBranchName} ${mergeDirRes.mergeDir}----${dir}`)
           inquirer.prompt(mergeCommit).then((mergeCommitRes) => {
               shell.exec(`git commit -m ${mergeCommitRes.mergeCommit}`)
               shell.exec(`git push origin ${branchName}`)
               console.log('success')
             });
-          
-      
         });
   
     });
