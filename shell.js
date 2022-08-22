@@ -31,20 +31,20 @@ const mergeBranchName = [
     },
   ];
   
-  inquirer.prompt(mergeBranchName).then((res) => {
-    console.log(`Hi ${res.mergeBranchName}!`);
-    shell.exec(`git checkout ${res.mergeBranchName}`)
+  inquirer.prompt(mergeBranchName).then((mergeBranchNameRes) => {
+    // console.log(`${mergeBranchNameRes.mergeBranchName}!`);
+    shell.exec(`git checkout ${mergeBranchNameRes.mergeBranchName}`)
     shell.exec(`git pull`)
     shell.exec(`git checkout ${branchName}`)
     shell.exec(`git pull`)
 
-    inquirer.prompt(mergeDir).then((res) => {
+    inquirer.prompt(mergeDir).then((mergeDirRes) => {
         
-        shell.exec(`git checkout ${res.mergeBranchName} ${res.mergeDir}`)
+        shell.exec(`git checkout ${mergeBranchNameRes.mergeBranchName} ${mergeDirRes.mergeDir}`)
         shell.exec(`git add .`)
-        inquirer.prompt(mergeCommit).then((res) => {
-            shell.exec(`git commit -m ${res.mergeCommit}`)
-            console('合并完成，是否需要自动push到远程')
+        inquirer.prompt(mergeCommit).then((mergeCommitRes) => {
+            shell.exec(`git commit -m ${mergeCommitRes.mergeCommit}`)
+            console('合并完成，暂时需要手动push到远程')
           });
     
       });
