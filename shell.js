@@ -1,3 +1,4 @@
+const fs = require("fs");  // 执行文件操作
 const shell = require("shelljs");  // 执行文件操作
 const argv = require('yargs').argv; // yargs 处理参数
 const inquirer = require('inquirer');
@@ -30,7 +31,7 @@ const mergeBranchName = [
       message: "请输入你想要合并的commit信息",
     },
   ];
-  try{
+
     inquirer.prompt(mergeBranchName).then((mergeBranchNameRes) => {
       // console.log(`${mergeBranchNameRes.mergeBranchName}!`);
 
@@ -40,7 +41,7 @@ const mergeBranchName = [
       shell.exec(`git pull`)
   
       inquirer.prompt(mergeDir).then((mergeDirRes) => {
-        try{
+
           shell.exec(`git checkout ${mergeBranchNameRes.mergeBranchName} ${mergeDirRes.mergeDir}`)
           shell.exec(`git add .`)
           console.log(`git checkout ${mergeBranchNameRes.mergeBranchName} ${mergeDirRes.mergeDir}`)
@@ -49,18 +50,15 @@ const mergeBranchName = [
               shell.exec(`git push origin ${branchName}`)
               console.log('success')
             });
-        }catch(err){
-          console.log(err)
-        }
           
       
         });
   
     });
-  }catch(err){
-    console.log(err)
-  }
-  
+
+  process.on('uncaughtException', (err) => {
+    fs.writeSync(1, `捕获到异常：${err}\n`);
+  });
 
 
 // shell.exec(`git checkout ${commit[0]}`)
