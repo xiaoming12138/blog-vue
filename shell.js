@@ -40,7 +40,7 @@ const mergeBranchName = [
 
     inquirer.prompt(mergeDir).then((res) => {
         
-        shell.exec(`git checkout ${res.mergeDir}`)
+        shell.exec(`git checkout ${res.mergeBranchName} ${res.mergeDir}`)
         shell.exec(`git add .`)
         inquirer.prompt(mergeCommit).then((res) => {
             shell.exec(`git commit -m ${res.mergeCommit}`)
