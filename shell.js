@@ -26,7 +26,7 @@ const mergeBranchName = [
   const mergeCommit = [
     {
       type: 'input',
-      name: 'mergeDir',
+      name: 'mergeCommit',
       message: "请输入你想要合并的commit信息",
     },
   ];
