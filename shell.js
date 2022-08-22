@@ -42,6 +42,7 @@ const mergeBranchName = [
         
         shell.exec(`git checkout ${mergeBranchNameRes.mergeBranchName} ${mergeDirRes.mergeDir}`)
         shell.exec(`git add .`)
+        console.log(`git checkout ${mergeBranchNameRes.mergeBranchName} ${mergeDirRes.mergeDir}`)
         inquirer.prompt(mergeCommit).then((mergeCommitRes) => {
             shell.exec(`git commit -m ${mergeCommitRes.mergeCommit}`)
             console('合并完成，暂时需要手动push到远程')
