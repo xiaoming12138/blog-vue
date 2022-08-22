@@ -30,28 +30,32 @@ const mergeBranchName = [
       message: "请输入你想要合并的commit信息",
     },
   ];
+  try{
+    inquirer.prompt(mergeBranchName).then((mergeBranchNameRes) => {
+      // console.log(`${mergeBranchNameRes.mergeBranchName}!`);
+      shell.exec(`git checkout ${mergeBranchNameRes.mergeBranchName}`)
+      shell.exec(`git pull`)
+      shell.exec(`git checkout ${branchName}`)
+      shell.exec(`git pull`)
   
-  inquirer.prompt(mergeBranchName).then((mergeBranchNameRes) => {
-    // console.log(`${mergeBranchNameRes.mergeBranchName}!`);
-    shell.exec(`git checkout ${mergeBranchNameRes.mergeBranchName}`)
-    shell.exec(`git pull`)
-    shell.exec(`git checkout ${branchName}`)
-    shell.exec(`git pull`)
-
-    inquirer.prompt(mergeDir).then((mergeDirRes) => {
-        
-        shell.exec(`git checkout ${mergeBranchNameRes.mergeBranchName} ${mergeDirRes.mergeDir}`)
-        shell.exec(`git add .`)
-        console.log(`git checkout ${mergeBranchNameRes.mergeBranchName} ${mergeDirRes.mergeDir}`)
-        inquirer.prompt(mergeCommit).then((mergeCommitRes) => {
-            shell.exec(`git commit -m ${mergeCommitRes.mergeCommit}`)
-            shell.exec(`git push origin ${branchName}`)
-
-          });
-    
-      });
-
-  });
+      inquirer.prompt(mergeDir).then((mergeDirRes) => {
+          
+          shell.exec(`git checkout ${mergeBranchNameRes.mergeBranchName} ${mergeDirRes.mergeDir}`)
+          shell.exec(`git add .`)
+          console.log(`git checkout ${mergeBranchNameRes.mergeBranchName} ${mergeDirRes.mergeDir}`)
+          inquirer.prompt(mergeCommit).then((mergeCommitRes) => {
+              shell.exec(`git commit -m ${mergeCommitRes.mergeCommit}`)
+              shell.exec(`git push origin ${branchName}`)
+              console.log('success')
+            });
+      
+        });
+  
+    });
+  }catch(err){
+    console.log(err)
+  }
+  
 
 
 // shell.exec(`git checkout ${commit[0]}`)
