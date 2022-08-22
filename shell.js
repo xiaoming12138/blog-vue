@@ -1,4 +1,3 @@
-const fs = require("fs");  // 执行文件操作
 const shell = require("shelljs");  // 执行文件操作
 const argv = require('yargs').argv; // yargs 处理参数
 const inquirer = require('inquirer');
@@ -56,11 +55,4 @@ const mergeBranchName = [
     console.log(22,err)
   });
 
-
-// shell.exec(`git checkout ${commit[0]}`)
-// shell.exec(`git pull`)
-// shell.exec(`git checkout ${commit[1]}`)
-
-// shell.exec(`git pull`)
-// shell.exec(`git checkout ${commit[0]}`)
 
